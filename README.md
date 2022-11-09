@@ -7,6 +7,7 @@
 - HTML
 - CSS
 - React
+- Redux
 
 ## Live Demo (if available)
 
