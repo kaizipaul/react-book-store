@@ -1,29 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Booklist from './BookList';
 import Form from './BookForm';
 
 const BookSection = () => {
-  const allbooks = [
-    {
-      id: 1,
-      title: 'Atomic Habits',
-      author: 'James Clear',
-    },
-    {
-      id: 2,
-      title: 'Origin',
-      author: 'Dan Brown',
-    },
-    {
-      id: 3,
-      title: 'Winds of Winter',
-      author: 'George R. R. Martin',
-    },
-  ];
-
+  const books = useSelector((state) => state.book);
   return (
     <>
-      <Booklist books={allbooks} />
+      <Booklist books={books} />
       <Form />
     </>
   );
