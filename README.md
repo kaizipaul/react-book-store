@@ -8,6 +8,8 @@
 - CSS
 - React
 - Redux
+- Redux Toolkit
+- Bookstore API
 
 ## Live Demo (if available)
 
