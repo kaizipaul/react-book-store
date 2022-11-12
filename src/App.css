@@ -1,5 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&display=swap');
+
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #fafafa;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.nav-container {
+  height: 6rem;
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  background-color: #fff;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.nav-container > h1 {
+  color: #0290ff;
+  padding: 0 1.5rem;
+}
+
+.list {
+  list-style: none;
+  justify-content: space-between;
+  width: 15%;
+  padding: 0.8rem;
+  gap: 1.2rem;
+}
+
+.books {
+  width: 100%;
+}
+
+.main-book-wrapper {
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+  width: 90vw;
+  min-height: 10.6rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+  margin: 0 1.2rem;
+}
+
+.book-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.progress {
+  margin-left: 16rem;
+  align-items: center;
+  gap: 1rem;
+  border-right: 1px solid #e8e8e8;
+  padding-right: 6rem;
+}
+
+.progress-circle {
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 6px solid #0290ff;
+  border-left: 6px solid #e8e8e8;
+  border-radius: 50%;
+  rotate: 30deg;
+}
+
+.form-enclosure {
+  margin-top: 3rem;
+  width: 100%;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.percentage {
+  font-size: 2rem;
+}
+
+.completed {
+  color: #909090;
+  font-size: 0.875rem;
+}
+
+.chapter {
+  padding-left: 2rem;
+  margin-left: 0;
+  font-family: 'Roboto Slab', serif;
+}
+
+.booklist {
+  flex-direction: column;
+  gap: 0.938rem;
+  width: 90%;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.chapter-title,
+.chap {
+  font-size: 0.813rem;
+  font-weight: 300;
+  color: #a2a2a2;
+  padding: 0.2rem;
+}
+
+.chap {
+  color: #232323;
+  font-size: 1rem;
+}
+
+.chapter-btn {
+  width: 11rem;
+  height: 2rem;
+  color: #fff;
+  font-weight: 300;
+  padding-inline: 1rem;
+  font-size: 0.813rem;
+  background-color: #0290ff;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.remove-button,
+.btn {
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  color: #4386bf;
+  font-family: 'Roboto Slab', serif;
+  cursor: pointer;
+  background: none;
+  font-weight: 300;
+  font-size: 0.87rem;
+  border-top: none;
+  border-bottom: none;
+}
+
+.btn {
+  border: none;
+}
+
+.form {
+  margin: 1rem 1.2rem;
+  width: 90vw;
+  gap: 2rem;
+  align-items: center;
+  padding: 0;
+}
+
+.book-title-input {
+  width: 60rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+
+::placeholder {
+  color: #c4c4c4;
+  font-family: 'Montserrat', serif;
+}
+
+.addbook {
+  width: 16rem;
+  height: 3rem;
+  color: #fff;
+  font-weight: 700;
+  padding-inline: 1rem;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.813rem;
+  background-color: #0290ff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1.4rem;
+}
+
+.author {
+  width: 23.8rem;
+}
+
+.icon {
+  margin: 0 5rem;
+  position: relative;
+  left: 47rem;
+  border: solid 1px #e8e8e8;
+  width: 2rem;
+  height: 2rem;
+  padding: 4px;
+  border-radius: 50%;
+  color: #0290ff;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.category {
+  font-size: 0.8rem;
+  color: #8a8a8a;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  width: 3rem;
+  padding: 0.5rem;
+}
+
+.book-title {
+  color: #121212;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.375rem;
+  font-weight: 800;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.book-author {
+  color: #4386bf;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.87rem;
+  font-weight: 300;
+  padding-left: 0.5rem;
+}
+
+.form-header {
+  color: #a7a7a7;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 1.2rem;
+}
+
+.book-buttons {
+  padding-left: 0.5rem;
 }
