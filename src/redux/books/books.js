@@ -1,6 +1,10 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 const ADD_BOOK = 'book-store/books/ADD_BOOK';
 const REMOVE_BOOK = 'book-store/books/REMOVE_BOOK';
 const GET_BOOKS = 'bookstore/books/GET_BOOKS';
+
 const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/J24AiHVbjsRSy0mbmbHF/books';
 
 const initialState = [];
@@ -21,61 +25,31 @@ const getFromApi = async () => {
   return booksData;
 };
 
-export const fetchBooks = () => (async (dispatch) => {
-  const booksData = await getFromApi();
-  dispatch({
-    type: GET_BOOKS,
-    payload: booksData,
-  });
+export const fetchBooks = createAsyncThunk(GET_BOOKS, async () => {
+  const payload = await getFromApi();
+  return payload;
 });
 
-const sendToApi = async (payload) => {
-  const {
+export const addbook = createAsyncThunk(
+  ADD_BOOK,
+  async ({
     id, title, author, category,
-  } = payload;
-  const send = await fetch(apiUrl, {
-    method: 'POST',
-    body: JSON.stringify({
+  }) => {
+    await axios.post(apiUrl, {
       item_id: id,
       title,
       author,
       category,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  (await send.text());
-};
+    });
+    return {
+      id, title, author, category,
+    };
+  },
+);
 
-const deleteFromApi = async (id) => {
-  const remove = await fetch(`${apiUrl}/${id}`, {
-    method: 'DELETE',
-    body: JSON.stringify({
-      item_id: id,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  (await remove.text());
-};
-
-export const addbook = (payload) => (async (dispatch) => {
-  const { id, title, author } = payload;
-  await sendToApi(payload);
-  dispatch({
-    type: ADD_BOOK,
-    book: { id, title, author },
-  });
-});
-
-export const removeBook = (id) => (async (dispatch) => {
-  await deleteFromApi(id);
-  dispatch({
-    type: REMOVE_BOOK,
-    id,
-  });
+export const removeBook = createAsyncThunk(REMOVE_BOOK, async (payload) => {
+  await axios.delete(`${apiUrl}/${payload}`);
+  return payload;
 });
 
 export const getbooks = () => (async (dispatch) => {
@@ -89,10 +63,10 @@ export const getbooks = () => (async (dispatch) => {
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
-      return [...state, action.book];
+      return [...state, action.payload];
 
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.id);
+      return state.filter((book) => book.id !== action.payload);
 
     case GET_BOOKS:
       return action.payload;
